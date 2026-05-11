@@ -1,3 +1,6 @@
+<img width="1135" height="667" alt="K8&#39;s Architecture" src="https://github.com/user-attachments/assets/dca2458b-a5a4-4147-b2f5-8805dcc3a9d3" />
+
+
 Docker Swarm   Vs  K8's
 we do not have auto-scalling/ no rollback / downtime (can't able ato access application) indocker swarm
 will use to overcome all aboveprefer K8's
@@ -11,7 +14,7 @@ Docker swarm    - will use for small application  (company websites , bike showr
 K8's            - (e -cmommerce & insurance company IRCTC youtube users etc)
 
 Arhitecture
-
+<img width="1135" height="667" alt="K8&#39;s Architecture" src="https://github.com/user-attachments/assets/dca2458b-a5a4-4147-b2f5-8805dcc3a9d3" />
 we have two nodes 
 
       1) Mater Node  (Control plane)
