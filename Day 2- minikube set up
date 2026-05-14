@@ -62,6 +62,16 @@ spec:
 kubctl describe pod podname   --- >to get all info of pod
  kubectl delete pod mypod     ---> to delete pod 
  kubectl delete pod --all   ----> tp delete ll pods
+       0r
+
+to get list of pods : kubectl get po
+to delete a pod : kubectl delete pod pod-name
+to delete all pods : kubectl delete pod --all
+to get full info about a pod : kubectl describe pod pod-name
+to get pod ip address & node details : kubectl get po -o wide
+to execute a manifest file : kubectl create -f filename
+imperative way to create a pod : kubectl run pod-name --image=image-name
+to see list of resources : kubectl api-resources
 
 
 
