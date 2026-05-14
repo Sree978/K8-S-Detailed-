@@ -1,2 +1,42 @@
-Create a ec2 server 
-insatll docker and minikube
+Create a ec2 server  (C7I-flex large )
+insatll docker and minikube 
+install Kubectl  (Its cli tool foe kubernetes)
+create a pod
+         we can create any resource (pod ,deployment, svc, replication ) in two ways
+ 1) imperative - over command
+ 2) declarative - over manifest file 
+      /////  POD    //////
+It is a smallest object that we can create in K8's.
+It is a group of containers.
+Pod acts like a single instance for our application.
+Pods are ephemeral (short living objects).
+Mostly we can use single container inside a pod but if we required, we can create multiple containers inside a same pod.
+When we create a pod, containers inside pods can share the same network namespace, and can share the same storage volumes.
+While creating pod, we must specify the image, along with any necessary configuration and resource limits.
+K8's cannot communicate with containers, they can communicate with only pods.
+We can create this pod in two ways:
+Imperative (command)
+Declarative (Manifest file)
+
+Cluster : Group of servers
+pod creates inside cluster 
+containers creates inside pod
+
+ 1  sudo yum install docker -y
+    2  sudo systemctl start docker
+    3  clear
+    4  curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
+    5  sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+    6  minikube start --driver=docker --force
+   7  minikube status
+   8  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+   9  chmod +x kubectl
+   10  clear
+   11  mv kubectl /usr/local/bin/
+   12 kubectl version
+ 
+
+
+
+
+
