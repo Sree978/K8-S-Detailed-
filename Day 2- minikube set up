@@ -34,6 +34,41 @@ containers creates inside pod
    10  clear
    11  mv kubectl /usr/local/bin/
    12 kubectl version
+   13 kubectl run mypod --image=sree978/sree:appv1        -- >to create pod
+   14 kubectl get pods                                      --> to check list of pods
+   15 kubectl run mypod3 --image=sree978/sree:appv1
+   16 kubectl get po                                          --> to check list of pods                             
+     we created pods in imperative way meand we did over commands
+kubctl api-resources    to get all deatils
+    vim pod.yml
+  [
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: devops-pod
+spec:
+  containers:
+    - name: mycont
+      image: Sree978/sree:appv1
+      ports:
+        - containerPort: 80
+]
+    kubectl create -f pod.yml
+    kubectl get po
+    kubectl get po -o wide     --> to get ip deatils of pod
+    kubectl get po -o yaml    --> to get details in yaml format (We wont use it )
+    kubectl get po podname -o yaml   --> to get paryicular pod info 
+kubctl describe pod podname   --- >to get all info of pod
+ kubectl delete pod mypod     ---> to delete pod 
+ kubectl delete pod --all   ----> tp delete ll pods
+
+
+
+
+
+
+
  
 
 
