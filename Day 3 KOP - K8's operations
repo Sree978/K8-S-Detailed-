@@ -3,10 +3,16 @@ Labels, slectors & node selectors
 
 Kops is s tool to create cluster
 
-KOPS will manage 
+KOPS will manage automatically 
 entire infra
   servers
   n/w
-  asg
+  asg (auto scalling group )
   load balancers
   sec groups
+
+Steps :
+  launch an EC2 instance
+  KOPS INSTALL
+  CLUSTER CREATE
+  KUBECTL INSTALL
