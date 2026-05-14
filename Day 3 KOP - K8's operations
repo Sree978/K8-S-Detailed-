@@ -1,0 +1,12 @@
+Title : Multi  node cluster
+Labels, slectors & node selectors
+
+Kops is s tool to create cluster
+
+KOPS will manage 
+entire infra
+  servers
+  n/w
+  asg
+  load balancers
+  sec groups
