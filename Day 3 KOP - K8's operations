@@ -16,3 +16,5 @@ Steps :
   KOPS INSTALL
   CLUSTER CREATE
   KUBECTL INSTALL
+
+cmd : kops create cluster --name flm.k8s.local --zones=us-east-1a,us-east-1b --master-count=1 --master-size=c7i-flex.large --master-volume-size=30 --worker-count=2 --worker-size=t3.micro --worker-volume-size=20 --image=ami-0360c520857e3138f
