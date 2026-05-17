@@ -82,6 +82,22 @@ check in Ec2 will see two worker nodes and master nodes
 
 even load balancers also
 
+-----> create a pod  <-----------
+create pod.yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+    - name: cont-1
+      image: sree978/sree/appv1
+      ports:
+        - containerPort: 80
+kubectl create -f pod.yml    to create pods 
+
+Kubectl get po    - to get pods
+
 
 -------------> Labels  <--------------------
 
