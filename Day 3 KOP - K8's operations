@@ -4,6 +4,8 @@ KOPS : Kubernetes Operations
 Labels, slectors & node selectors
 
 Kops is s tool to create cluster
+cluster : group of server
+(naster & worker servers)
 
 KOPS will manage automatically 
 entire infra
@@ -18,5 +20,9 @@ Steps :
   KOPS INSTALL
   CLUSTER CREATE
   KUBECTL INSTALL
+KOPS install :
+curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+chmod +x kops
+sudo mv kops /usr/local/bin/kops
+kops version    ---> to get version
 
-cmd : kops create cluster --name flm.k8s.local --zones=us-east-1a,us-east-1b --master-count=1 --master-size=c7i-flex.large --master-volume-size=30 --worker-count=2 --worker-size=t3.micro --worker-volume-size=20 --image=ami-0360c520857e3138f
