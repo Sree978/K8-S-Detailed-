@@ -70,7 +70,10 @@ Finally configure your cluster with: kops update cluster --name flm.k8s.local --
 
  cmd  : kops get cluster    ----------->  to get list of cluster s
 
- 
+Install kube ctl 
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+kubectl version
 
 
 -------------> Labels  <--------------------
