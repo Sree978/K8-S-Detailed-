@@ -103,6 +103,8 @@ kubectl get po --show-labels    to get labels from multiple pods
 
 
 if we want labels will give to metadata in manifest file 
+we can add labels for existed pods also
+kubectl label pod podname "env=test,app=zomato" 
 
 -------------> Labels  <--------------------
 
