@@ -97,7 +97,12 @@ spec:
 kubectl create -f pod.yml    to create pods 
 
 Kubectl get po    - to get pods
+Kubectl describe pod podname    to check labels
 
+kubectl get po --show-labels    to get labels from multiple pods
+
+
+if we want labels will give to metadata in manifest file 
 
 -------------> Labels  <--------------------
 
