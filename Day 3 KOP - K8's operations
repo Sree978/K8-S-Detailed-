@@ -68,6 +68,19 @@ Suggestions:
 
 Finally configure your cluster with: kops update cluster --name flm.k8s.local --yes --admin
 
+ cmd  : kops get cluster    ----------->  to get list of cluster s
 
+ 
+
+
+-------------> Labels  <--------------------
+
+Labels:
+
+Labels are used to organize Kubernetes Objects such as Pods, nodes, etc.
+You can add multiple labels over the Kubernetes Objects.
+Labels are defined in key-value pairs.
+Labels are similar to tags in AWS or Azure where you give a name to filter the resources quickly.
+You can add labels like environment, department or anything else according to you.
   
 
