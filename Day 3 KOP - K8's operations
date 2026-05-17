@@ -127,6 +127,34 @@ two types :
 
 --------> Node selector <----------------
 its used to select a particular node to create a pod
+cmd :  kubectl label node i-0fa30252d69538098 node=node2
+
+vim pod.yml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-1
+  labels:
+    env: test
+    app: swiggy
+    client: infosys
+spec:
+  nodeSelector:
+    node: node2
+  containers:
+    - name: cont-1
+      image: shaikmustafa/dm
+      ports:
+        - containerPort: 80
+
+kubectl creae -f pod.yml
+ will notice pod create in particular server
+
+will check in 
+
+kubectl get po -o wide
+ will notice here
 
   
 
