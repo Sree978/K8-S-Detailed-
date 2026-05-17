@@ -125,6 +125,8 @@ two types :
 1) Equality based selector       -    will do based on  =       cmd : kubectl get po -l env=test
 2) set based selector            - if we want two or more pod based labels  cmd : kubectl get po -l 'env in (test,dev) '
 
+--------> Node selector <----------------
+its used to select a particular node to create a pod
 
   
 
