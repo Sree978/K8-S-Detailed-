@@ -5,7 +5,7 @@ Labels, slectors & node selectors
 
 Kops is s tool to create cluster
 cluster : group of server
-(naster & worker servers)
+(naster(control plane ) & worker servers)
 
 KOPS will manage automatically 
 entire infra
@@ -25,4 +25,49 @@ curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s htt
 chmod +x kops
 sudo mv kops /usr/local/bin/kops
 kops version    ---> to get version
+
+cluster command
+
+
+
+before run cluster command
+
+we have attached IAM role for instace and create bucket 
+
+Bukcet name :  aws s3 mb s3://bucketname (should be unique)
+ego to bucket properities and enable bucket versioning 
+
+use of bucket version ( will get data even data deleted in bucket )
+aws s3 ls   ---- to get s3 bucket list 
+
+export KOP_STATE_STIRE=S3://sreekanth-kops-state-store      ----->export KOPS_STATE_STORE=s3://sreekanth-kops-state-store kOps stores:
+
+cluster configuration
+state information
+SSH keys
+certificates
+networking details
+inside an S3 bucket.
+
+cluster commnd :
+kops create cluster --name flm.k8s.local \
+--zones=us-east-1a,us-east-1b \
+--control-plane-count=1 \
+--control-plane-size=c7i-flex.large \
+--control-plane-volume-size=30 \
+--node-count=2 \
+--node-size=t3.micro \
+--node-volume-size=20 \
+--image=ami-091138d0f0d41ff90
+
+Suggestions:
+ * list clusters with: kops get cluster
+ * edit this cluster with: kops edit cluster flm.k8s.local
+ * edit your node instance group: kops edit ig --name=flm.k8s.local nodes-us-east-1a
+ * edit your control-plane instance group: kops edit ig --name=flm.k8s.local control-plane-us-east-1a
+
+Finally configure your cluster with: kops update cluster --name flm.k8s.local --yes --admin
+
+
+  
 
