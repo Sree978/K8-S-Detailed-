@@ -156,5 +156,12 @@ will check in
 kubectl get po -o wide
  will notice here
 
+export KOPS_STATE_STORE=s3://sreekanth-kops-state-store
+kops delete cluster --name flm.k8s.local --yes
+kops get cluster
+
+ will notice all servers deleted
+
+
   
 
