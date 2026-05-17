@@ -74,6 +74,13 @@ Install kube ctl
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 chmod +x kubectl
 kubectl version
+ kubectl get nodes   
+
+
+VPC created default  with cluster name 
+check in Ec2 will see two worker nodes and master nodes 
+
+even load balancers also
 
 
 -------------> Labels  <--------------------
