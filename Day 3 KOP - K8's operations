@@ -117,5 +117,14 @@ You can add multiple labels over the Kubernetes Objects.
 Labels are defined in key-value pairs.
 Labels are similar to tags in AWS or Azure where you give a name to filter the resources quickly.
 You can add labels like environment, department or anything else according to you.
+
+------------> Selector <-------------------
+selector will select the label 
+
+two types :
+1) Equality based selector       -    will do based on  =       cmd : kubectl get po -l env=test
+2) set based selector            - if we want two or more pod based labels  cmd : kubectl get po -l 'env in (test,dev) '
+
+
   
 
