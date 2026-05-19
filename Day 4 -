@@ -142,7 +142,9 @@ we can how we did for cluster and nodeport now will get one more option DNS
 http:// ae2a589eedfb5452ca63b370a2fd3f00-1816321726.us-east-1.elb.amazonaws.com 
 like this we can browse
 
-
+kubectl delete svc myservice    - to delete service 
+kubectl delete svc --all
+ 
 
 
 Services :  will craete pods by using kubernetes we won't accesss pods directly so we have to expose it , so will use services to expose pods
