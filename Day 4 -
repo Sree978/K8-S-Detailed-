@@ -34,6 +34,28 @@ kops create cluster --name tinku.k8s.local \
 ----> kops validate cluster
 ---> kubectl get nodes
 
+------> Create pod <-------
+
+Create yaml file 
+vim pod.yml
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: pod1
+  labels:
+    app: paytm
+
+spec:
+  containers:
+    - name: cont-1
+      image: sree978/sree:appv1
+      ports:
+        - containerPort: 80
+
+cmd : kubectl create -f pod.yml
+will notiec pod created 
+
 
 Services :  will craete pods by using kubernetes we won't accesss pods directly so we have to expose it , so will use services to expose pods
  
