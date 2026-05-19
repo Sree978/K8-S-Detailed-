@@ -55,6 +55,34 @@ spec:
 
 cmd : kubectl create -f pod.yml
 will notiec pod created 
+cmd : kubectl get po    to check list of pods
+
+cmd : kubectl get po --show-labels
+kubectl api-resources | grep -i "service"   to know version
+ expose pods by using service 
+write a manifest file for service
+
+  vim getpod.yml
+
+    apiVersion: v1
+kind: Service
+
+metadata:
+  name: myservice
+
+spec:
+  type: ClusterIP
+
+  selector:
+    app: paytm
+
+  ports:
+    - port: 80
+      targetPort: 80
+cmd : kubectl create -f getpod.yml
+
+will notice service created 
+
 
 
 Services :  will craete pods by using kubernetes we won't accesss pods directly so we have to expose it , so will use services to expose pods
