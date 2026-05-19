@@ -32,6 +32,7 @@ kops create cluster --name tinku.k8s.local \
 ---> kops update cluster --name tinku.k8s.local --yes --admin
 
 ----> kops validate cluster
+---> kubectl get nodes
 
 
 Services :  will craete pods by using kubernetes we won't accesss pods directly so we have to expose it , so will use services to expose pods
