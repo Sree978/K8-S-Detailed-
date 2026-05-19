@@ -55,3 +55,5 @@ Simple Understanding
   ClusterIP  ---> Used for communication inside the cluster only.
    NodePort  --->Exposes application using: NodeIP:Port  Accessible from outside the cluster.
 LoadBalancer  --->Creates an external load balancer with DNS Mostly used in cloud platforms like AWS, Azure, GCP.
+
+Note : In nodeport all requests goto single server & in loadbalncer all requests destribute server equvally
