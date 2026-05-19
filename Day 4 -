@@ -90,6 +90,32 @@ go to any instance node or worker connect server with ec2 instance
  cmd : curl and stable ip 
 ex: curl   100.64.181.91 
 
+2)  Node port 
+vim getpod.yml
+
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: myservice1
+
+spec:
+  type: NodePort
+
+  selector:
+    app: paytm1
+
+  ports:
+    - port: 80
+      targetPort: 80
+
+kubectl create -f getpod.yml
+same you can able to het over internal 
+
+and external also 
+for external browse:
+use selected node/ worker id ip address and port number of node
+ex : 54.227.50.22:32317
 
 
 
