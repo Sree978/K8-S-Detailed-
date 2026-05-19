@@ -60,7 +60,7 @@ cmd : kubectl get po    to check list of pods
 cmd : kubectl get po --show-labels
 kubectl api-resources | grep -i "service"   to know version
  expose pods by using service 
-write a manifest file for service
+write a manifest file for service (cluster ip) 
 
   vim getpod.yml
 
@@ -86,6 +86,9 @@ will notice service created
 kubectl get svc   ---> to check list of services
 kubectl describe service myservice    --> to get details of service
 
+go to any instance node or worker connect server with ec2 instance
+ cmd : curl and stable ip 
+ex: curl   100.64.181.91 
 
 
 
