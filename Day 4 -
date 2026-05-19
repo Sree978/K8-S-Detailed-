@@ -83,6 +83,11 @@ cmd : kubectl create -f getpod.yml
 
 will notice service created 
 
+kubectl get svc   ---> to check list of services
+kubectl describe service myservice    --> to get details of service
+
+
+
 
 
 Services :  will craete pods by using kubernetes we won't accesss pods directly so we have to expose it , so will use services to expose pods
