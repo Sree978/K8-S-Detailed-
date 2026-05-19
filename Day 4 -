@@ -13,3 +13,8 @@ kubectl version
 
 --> give  IAM access role to our Ec2 server
 ec2 instance > security >modify IAM role create new one or select existed role 
+create a bucket 
+aws s3 mb s3://kops-bucket-day4
+
+attach s3 bucket 
+export KOPS_STATE_STORE=s3://kops-bucket-day4
