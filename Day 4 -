@@ -35,4 +35,15 @@ kops create cluster --name tinku.k8s.local \
 
 
 Services :  will craete pods by using kubernetes we won't accesss pods directly so we have to expose it , so will use services to expose pods
-
+  Services Two type 1) Imperative
+                    2) declarative
+Kubernetes Services
+Service is a method for exposing Pods in your cluster.
+Each Pod gets its own IP address, but we need access using the Node IP.
+To access Pods internally within the cluster, we use ClusterIP.
+If the Service type is NodePort or LoadBalancer, it can also be accessed from outside the cluster.
+Services help decouple Pods from the network topology, making applications easier to manage and scale.
+Types of Kubernetes Services
+   ClusterIP
+   NodePort
+   LoadBalancer
