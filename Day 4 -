@@ -1,20 +1,38 @@
 Create instance  & install kops , kubectl
-
+---> install kops
 curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
 chmod +x kops
 sudo mv kops /usr/local/bin/kops            ---> kops install
 kops version
-
+ -----> install kubectl
 
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectlcurl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 mv kubectl /usr/local/bin/
 kubectl version 
 
---> give  IAM access role to our Ec2 server
+-----> give  IAM access role to our Ec2 server
 ec2 instance > security >modify IAM role create new one or select existed role 
-create a bucket 
+------> create a bucket 
 aws s3 mb s3://kops-bucket-day4
 
-attach s3 bucket 
+----->attach s3 bucket 
 export KOPS_STATE_STORE=s3://kops-bucket-day4
+----> create cluster 
+kops create cluster --name tinku.k8s.local \
+--zones us-east-1a,us-east-1b \
+--control-plane-count=1 \
+--control-plane-size=c7i-flex.large \
+--control-plane-volume-size=30 \
+--node-count=2 \
+--node-size=t3.micro \
+--node-volume-size=20 \
+--image=ami-091138d0f0d41ff90
+
+---> kops update cluster --name tinku.k8s.local --yes --admin
+
+----> kops validate cluster
+
+
+Services :  will craete pods by using kubernetes we won't accesss pods directly so we have to expose it , so will use services to expose pods
+
