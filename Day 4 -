@@ -46,3 +46,12 @@ Types of Kubernetes Services
    ClusterIP   - expose pods within the cluster it provides stable ip address by using the statble ip we can access application internally (withinserver ) will use in db server 
    NodePort    -expose pods it provides stable ip & node port node port range (30K TO 32767)  TO BROWSE OVER INTERNET WILL ISE NODE PORT
    LoadBalancer -EXPOSE POD, it provides stable ip , node port & DNS (www.flm.com)  while creating laod balancer so here kubernetes will communicate with cloud provider
+Kubernetes Service Types
+    Service Type	IP Details	Access Type
+   ClusterIP	Stable IP	Internal
+    NodePort	Stable IP + Node Port	Internal & External
+    LoadBalancer	Stable IP + Node Port + DNS	Internal & External
+Simple Understanding
+  ClusterIP  ---> Used for communication inside the cluster only.
+   NodePort  --->Exposes application using: NodeIP:Port  Accessible from outside the cluster.
+LoadBalancer  --->Creates an external load balancer with DNS Mostly used in cloud platforms like AWS, Azure, GCP.
