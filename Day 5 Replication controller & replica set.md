@@ -122,7 +122,14 @@ client expexting  new changes in application
    to delete & create new one there is downtime
    there is no autu scalling
    no rollback
-   can't create image directly 
+   can't create image directly
+
+   Will use Replica set (RS)
+
+   RC - will work on equality based selector
+   RS - will work set based selectors
+   
+   
 
 
 
