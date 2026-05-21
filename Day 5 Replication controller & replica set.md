@@ -99,6 +99,26 @@ same command for scale down for decrease count
 
 kubectl delete rc rcname   to delete perminently 
 
+client expexting  new changes in application
+
+1) start from developers
+2) will perform static code analysis for code & build & test , create image with docker & scan -> will push image to docker hub( Jenkins  will use it for automate this process )
+
+   will go to manifest file edit image version
+
+   cmd: kubectl apply -f rc rcname  we never see changes its sould be previous
+   
+
+    we can't update image directly in Replication controller
+
+   we have to delete RC and update new  
+    kubectl delete rc rcname
+     & 
+   will go to manifest file edit image version
+
+   cmd: kubectl create -f rc rcname
+
+
 
 
 
