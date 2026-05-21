@@ -1,5 +1,0 @@
----------------->  REPLICAS IN KUBERNETES   <---------------
-Before Kubernetes, other tools did not provide important and customized features like scaling and replication.
-When Kubernetes was introduced, replication and scaling were the premium features that increased the popularity of this container orchestration tool.
-Replication means that if the pod's desired state is set to 3 and whenever any pod fails, then with the help of replication, the new pod will be created as soon as possible. This will lead to a reduction in the downtime of the application.
-Scaling means if the load becomes increases on the application, then Kubernetes increases the number of pods according to the load on the application.
