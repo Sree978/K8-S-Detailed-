@@ -118,6 +118,12 @@ client expexting  new changes in application
 
    cmd: kubectl create -f rc rcname
 
+   Draw backs in RC
+   to delete & create new one there is downtime
+   there is no autu scalling
+   no rollback
+   can't create image directly 
+
 
 
 
