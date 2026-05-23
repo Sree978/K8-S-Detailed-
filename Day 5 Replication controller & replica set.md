@@ -128,7 +128,30 @@ client expexting  new changes in application
 
    RC - will work on equality based selector
    RS - will work set based selectors
-   
+
+
+
+   1  hostnamectl hostname repliac
+    2  exit
+    3  clear
+    4  export TMOUT0
+    5  curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+    6  chmod +x kops
+    7  sudo mv kops /usr/local/bin/kops
+    8  kops version
+    9  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+   10  chmod +x kubectl
+   11  mv kubectl /usr/local/bin/
+   12  kubectl version
+   13  clear
+   14  aws s3 ls
+   15  export KOPS_STATE_STORE=S3://kops-bucket-day4
+   16  kops create cluster --name flm.k8s.local --zones=us-east-1a,us-east-1b --control-plane-count=1 --control-plane-size=c7i-flex.large --control-plane-volume-size=30 --node-count=2 --node-size=t3.micro --node-volume-size=20 --image=ami-0236922087fa98b6e
+    21  kops update cluster --name flm.k8s.local --yes --admin
+   22  kops get cluster
+   26  kops delete cluster --name flm.k8s.local --yes
+  
+
    
 
 
