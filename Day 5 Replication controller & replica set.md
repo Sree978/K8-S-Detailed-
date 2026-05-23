@@ -218,6 +218,8 @@ spec:
 http:// url 
 will able to browse
 
+Pod scalling  RC by using manifestfile
+
  vim rc.yml
   
    50  vi rc.yml           ---- scale up replica count        
@@ -226,6 +228,27 @@ will able to browse
    53  vi rc.yml            --- scale down replica couunt
    54  kubectl apply -f rc.yml
    55  kubectl get pods     --- > will notice decreased replicas
+
+   0r   CMD 
+   kubectl scale rc flm  --replicas=4      ( replica count we can inxreas or secrease )
+
+   Drawback in repplica
+   
+   
+  1) no auto scalling here  &  2) downtime exsited & 3) we can't update image directly  4) ro rollback
+
+   
+
+to over downtime   ( delete old rc and create new RC adding image ) for this while creating new there is downtime
+ wont use real time
+
+ Replicacation set 
+
+   
+
+   
+   
+   
 
 
 
