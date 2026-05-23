@@ -327,7 +327,9 @@ will notice pod here
    
 
    cmd : kubectl get deploy
-   
+
+   kubectl delete deploy mydeploy   to delete  
+
    
 
 
