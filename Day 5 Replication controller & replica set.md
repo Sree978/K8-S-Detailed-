@@ -126,8 +126,8 @@ client expexting  new changes in application
 
    Will use Replica set (RS)
 
-   RC - will work on equality based selector
-   RS - will work set based selectors
+   RC - will work on equality based selector  (old version of k8's)
+   RS - will work set based selectors    - (  new version of k8's)
 
 
 
@@ -242,7 +242,55 @@ Pod scalling  RC by using manifestfile
 to over downtime   ( delete old rc and create new RC adding image ) for this while creating new there is downtime
  wont use real time
 
- Replicacation set 
+-->  Replica  set   RS  ( new version obejct  in nk8's)
+
+
+
+cp rc.yml rs.yml
+
+vim rs.yml
+apiVersion: apps/v1
+kind: ReplicaSet
+
+metadata:
+  name: flm
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+     app: swiggy
+
+  template:
+
+    metadata:
+      labels:
+        app: swiggy
+
+    spec:
+      containers:
+        - name: cont-1
+          image: shaikmustafa/paytm:bus
+          ports:
+            - containerPort: 80
+cmd: kubectl create -f rs.yml
+
+
+# RS
+
+# to get list of rs :
+kubectl get rs
+
+# to get full info about rs :
+kubectl describe rs rs-name
+
+# to delete an rs :
+kubectl delete rs rs-name
+
+# scale :
+kubectl scale rs rs-name --replicas=count
+
+
 
    
 
