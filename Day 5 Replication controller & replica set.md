@@ -291,10 +291,42 @@ kubectl delete rs rs-name
 kubectl scale rs rs-name --replicas=count
 
 
+To over RC & RS draw backs will use deplyment
+
+the manifest file RS and deployment similar  ( Kind wonly will chaneg)
+
+vim deployment.yml
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: mydeply
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+     app: swiggy
+
+  template:
+
+    metadata:
+      labels:
+        app: swiggy
+
+    spec:
+      containers:
+        - name: cont-1
+          image: shaikmustafa/paytm:bus
+          ports:
+            - containerPort: 80
+
+kubectl create -f deployment.yml
+will notice pod here
 
    
 
-   
+   cmd : kubectl get deploy
    
    
 
