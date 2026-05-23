@@ -150,6 +150,75 @@ client expexting  new changes in application
     21  kops update cluster --name flm.k8s.local --yes --admin
    22  kops get cluster
    26  kops delete cluster --name flm.k8s.local --yes
+   vim rc.yml
+apiVersion: v1
+kind: ReplicationController
+
+metadata:
+  name: flm
+
+spec:
+  replicas: 3
+
+  selector:
+    app: swiggy
+
+  template:
+
+    metadata:
+      labels:
+        app: swiggy
+
+    spec:
+      containers:
+        - name: cont-1
+          image: shaikmustafa/dm
+          ports:
+            - containerPort: 80
+
+       
+   33  kubectl create -f rc.yml
+   will notice three pods which we created 
+   
+   35  kubectl get rc
+   36  kubectl get po
+   39  kubectl rm -f rc.yml
+   40  kubectl delete rc flm
+   41  kubectl create -f rc.yml
+   42  kubectl get rc
+   43  kubectl describe rc flm
+   44  history
+
+--> write a service file
+vim svc.yml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysvc
+spec:
+  type: LoadBalancer
+  selector:
+    app: swiggy
+  ports:
+    - port: 80
+      targetPort: 80
+
+      Kubectl create -f svc.yml
+
+      will notice service creates
+
+      kubectl get svc
+
+      will get DNS:   abaf8e045403040518790d80a1fbe79d-71458234.us-east-1.elb.amazonaws.com
+
+      its take min couple of min to browse
+      
+     
+http:// url 
+will able to browse
+
+
   
 
    
