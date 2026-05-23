@@ -232,7 +232,7 @@ Pod scalling  RC by using manifestfile
    0r   CMD 
    kubectl scale rc flm  --replicas=4      ( replica count we can inxreas or secrease )
 
-   Drawback in repplica
+   Drawback in repplica controller  RC & RS ( replica set)
    
    
   1) no auto scalling here  &  2) downtime exsited & 3) we can't update image directly  4) ro rollback
