@@ -73,4 +73,11 @@ Scale out
 
 kubectl scale statefulset flm --replicas=6
 
+will notice pods increasing count
+kubectl get po
+
+here pods created one by one ( once created only then its create one more pod )  in deployment all pods create at time
+
+
+
 
