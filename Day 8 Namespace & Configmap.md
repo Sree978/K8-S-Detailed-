@@ -120,4 +120,21 @@ If we delete one name space all resources deleted whichever in namespace  we nev
 
  ------------->  CONFIGMAPS  <-------------------
 
+a ConfigMap is used to store non-sensitive configuration data as key-value pair format.
+It helps separate configuration from the application container image.
+Why ConfigMaps are used : 
+Instead of hardcoding values inside your application or Docker image, you can store them externally.
+Example:
+   Database URL
+      Application mode
+      Port numbers
+      Environment variables
+      Configuration files
+This makes applications:
+      portable
+      reusable
+      easier to update
+
+ 
+
  
