@@ -27,12 +27,52 @@ spec:
 
         ports:
         - containerPort: 80
-        
+  Kubectl create -y deoployment.yml
+  will notice deploy created 
 
-   4  kubectl get pods
+----> to expose we need to write a service file 
+ vim svc.yml
+ 
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: mysvc
+
+spec:
+  type: LoadBalancer
+
+  selector:
+    app: zomato
+
+  ports:
+  - port: 80
+    targetPort: 80
+
+
+kubectl create -f svc.yml
+
+will notice svc created
+o/p = ad339e59a2ee44f67bdf34d9fcc36abe-786411514.us-east-1.elb.amazonaws.com  will access over browser
+
+
+  1) IMAGE UPDATE DIRECTLY
+     
+  Over manifest file
+
+  same deployment file 
+  image: shaikmustafa/bus 
+
+  Kubectl apply -y deoployment.yml
+
+  will go to browswer and notice update image
+  
+  over commn
+  
     5  kubectl set image deploy flm
     7  kubectl set image deploy flm test-1=shaikmustafa/paytm:bus
     will notice image directly update 
+2)  rollout   
     
     8  kubectl rollout status deploy flm
     9  kubectl ge trs
@@ -64,6 +104,57 @@ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/late
 scallinfg two types vertical scalling & Horizontacl scalling
 
 will use Horizonatl pod autosacle real time
+
+ckubectl api-resources | grep -i "hpa"     ---- > to get api version of HPA
+vim hpa.yml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+
+metadata:
+  name: myhpa
+
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: flm
+
+  minReplicas: 3
+  maxReplicas: 20
+
+  metrics:
+  - type: Resource
+
+    resource:
+      name: cpu
+
+      target:
+        type: Utilization
+        averageUtilization: 60
+
+    kubectl create -f hpa.yml
+    
+[root@deploy ~]# kubectl get hpa
+NAME    REFERENCE        TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+myhpa   Deployment/flm   cpu: 0%/60%   3         20        3          83s
+
+kubectl exec -it podname --bash   --> to go inside bash
+    (  to creatte dummy storage will use stress
+   apt install stress -y    )
+
+   inside pod and apply stress 
+   cmd: stress -c 2 -t 300 -w
+
+   will notice pod created 
+
+   control + c for stop autoscalling 
+   
+   
+   
+   
+   
+
+
 
 
 
