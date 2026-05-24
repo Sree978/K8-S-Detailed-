@@ -147,6 +147,14 @@ kops edit ig --name=ccit.k8s.local nodes-us-east-1b
 kops update cluster --name ccit.k8s.local --yes --admin
 
 
+Kubectl get no
+
+will notice nodes created
+
+kubectl get po
+
+will notice clusters created
+
 
 
 
