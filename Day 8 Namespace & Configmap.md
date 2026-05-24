@@ -154,6 +154,28 @@ will notice created configmap
 
 kubectl get cm
 kubectl describe cm cm1 (config name )
+will notice all data
+    imperative way 
+kubectl create cm cm2 --from-literal=Name=Mustafa --from-literal=Company=FLM --from-literal=Place=Hyd     to add environ ments 
+ or 
+
+ vim app.env 
+
+ app=uxapps
+ company=tcs
+ porject=banking
+ 
+ kubectl create cm cm3 --from-env-file=app.env
+
+ kubectl describe cm cm3
+
+
+
+ 
+ 
+
+
+
 
 
  
