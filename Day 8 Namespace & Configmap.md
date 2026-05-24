@@ -134,6 +134,27 @@ This makes applications:
       portable
       reusable
       easier to update
+<img width="929" height="466" alt="image" src="https://github.com/user-attachments/assets/55eb4895-3348-42ad-9cb4-8a89aba01638" />
+
+vim configmap.yml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm1
+data:
+  PORT: "3306"
+  DB_NAME: "flmdb"
+  COURSE: "DevOps"
+  Cloud: "AWS"
+
+
+Kubectl create -f congifmap.yml
+
+will notice created configmap
+
+kubectl get cm
+kubectl describe cm cm1 (config name )
+
 
  
 
