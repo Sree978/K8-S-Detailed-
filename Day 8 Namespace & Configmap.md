@@ -249,6 +249,9 @@ printenv
 
 will notice different values from different Configmaps
 
+![Uploading image.png…]()
+
+
 
 
  
