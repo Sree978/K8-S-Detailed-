@@ -145,7 +145,7 @@ client expexting  new changes in application
    12  kubectl version
    13  clear
    14  aws s3 ls
-   15  export KOPS_STATE_STORE=S3://kops-bucket-day4
+   15  export KOPS_STATE_STORE=s3://kops-bucket-day4
    16  kops create cluster --name flm.k8s.local --zones=us-east-1a,us-east-1b --control-plane-count=1 --control-plane-size=c7i-flex.large --control-plane-volume-size=30 --node-count=2 --node-size=t3.micro --node-volume-size=20 --image=ami-0236922087fa98b6e
     21  kops update cluster --name flm.k8s.local --yes --admin
    22  kops get cluster
