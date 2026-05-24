@@ -29,3 +29,8 @@ https://github.com/devops0014/k8s-stateful-set-application.git
 
    1) Primary pod ( Read & write )
    2) secondary ( Read)
+
+For statefullset manifest file same as fr deployment 
+
+vim statefullset.yml
+
