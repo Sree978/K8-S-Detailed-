@@ -79,5 +79,14 @@ kubectl get po
 here pods created one by one ( once created only then its create one more pod )  in deployment all pods create at time
 
 
+scale down
+kubectl scale statefulset flm --replicas=2
+
+
+will noticed deleted pods which created latest ( LIFD) 
+
+
+
+
 
 
