@@ -86,6 +86,9 @@ o/p = ad339e59a2ee44f67bdf34d9fcc36abe-786411514.us-east-1.elb.amazonaws.com  wi
    17  kubectl rollout history deploy flm
    18  kubectl rollout undo deploy flm --to-revision=2
    19  kubectl rollout history deploy flm
+
+    Annotate:
+    
    20  kubectl annotate deploy flm kubernetes.io/change-cause="my detailed change description"
    21  kubectl rollout history deploy flm
    22  kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
