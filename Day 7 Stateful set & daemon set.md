@@ -69,4 +69,8 @@ kubecetl get nodes
 
 will see nodes name sequencial ( ex flm0, flm1 & flm3)
 
+Scale out 
+
+kubectl scale statefulset flm --replicas=6
+
 
