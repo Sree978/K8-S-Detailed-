@@ -34,3 +34,39 @@ For statefullset manifest file same as fr deployment
 
 vim statefullset.yml
 
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: flm
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: zomato
+
+  template:
+    metadata:
+      labels:
+        app: zomato
+
+    spec:
+      containers:
+      - name: test-1
+        image: shaikmustafa/cycle
+
+        ports:
+        - containerPort: 80
+
+   kubectl create -y statefullset.yml
+
+will notices created statefull set
+
+kubectl get statefulset 
+kubecetl get nodes
+
+will see nodes name sequencial ( ex flm0, flm1 & flm3)
+
+
