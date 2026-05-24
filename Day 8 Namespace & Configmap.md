@@ -169,6 +169,86 @@ kubectl create cm cm2 --from-literal=Name=Mustafa --from-literal=Company=FLM --f
 
  kubectl describe cm cm3
 
+ will notice all data which we added
+
+
+real time wil use mostly declarative & env file
+
+we created config file to attach for pod
+   Possible Ways to Attach a ConfigMap to a Pod
+      We can attach a complete ConfigMap to a Pod.
+      We can attach multiple ConfigMaps to a Pod.
+      We can attach specific key/value pairs from a ConfigMap to a Pod.
+      We can attach different values from different ConfigMaps to a Pod
+--> config  map to add ( multiple config or single configmap)
+write a manifest file for pod 
+vim pod.yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: flm-pod
+
+spec:
+  containers:
+    - name: cont-1
+      image: nginx
+      ports:
+        - containerPort: 80
+      envFrom:
+        - configMapRef:
+            name: cm1
+        - configMapRef:
+            name: cm2
+
+kubectl create -f pod.yml
+kubectl get po
+kubectl exec -it flm-pod -- bash
+printenv
+
+To add different specific value from deffirent configmap
+
+vim pod.yml
+
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: flm-pod
+
+spec:
+  containers:
+    - name: cont-1
+      image: nginx
+
+      ports:
+        - containerPort: 80
+
+      env:
+        - name: mycloud
+          valueFrom:
+            configMapKeyRef:
+              name: cm1
+              key: Cloud
+
+        - name: myport
+          valueFrom:
+            configMapKeyRef:
+              name: cm1
+              key: PORT
+
+        - name: myarea
+          valueFrom:
+            configMapKeyRef:
+              name: cm2
+              key: Place
+
+kubectl create -f pod.yml
+
+kubectl exec -it flm-pod1 -- bash
+printenv 
+
+will notice different values from different Configmaps
+
 
 
  
