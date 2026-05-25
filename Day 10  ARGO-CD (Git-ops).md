@@ -45,5 +45,16 @@ so we are facing some security challenges and need to install some third party t
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 kubectl get all -n argocd
+kubectl get ns   - we created namespace for argocd 
+kubectl get all -n argocd  
+   will notice created pods ,services , deployment statefulset replica set these all services in cluster ip
+   
+   EXPOSE ARGOCD SERVER:
 
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+yum install jq -y
+export ARGOCD_SERVER='kubectl get svc argocd-server -n argocd -o json | jq --raw-output .status.loadBalancer.ingress[0].hostname'
+echo $ARGOCD_SERVER
+kubectl get svc argocd-server -n argocd -o json | jq --raw-output .status.loadBalancer.ingress[0].hostname
+ wait for a min and last command will provide DNS server over that wil access ARGOCD 
 
