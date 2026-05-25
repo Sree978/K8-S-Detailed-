@@ -85,6 +85,21 @@ will notice all data which we given
 we can attatch indivudval values from indidval secrets to pods
 
 
+---------------------->  Resource Quota <------------------
+
+Kubernetes ResourceQuota is used to limit resource usage inside a namespace.
+  Practically companies use it to prevent:
+    One team consuming all cluster resources
+    Too many pods getting created accidentally
+    High CPU/Memory usage affecting other applications
+• By default pod in Kubernetes will run with no limits on CPU and memory.
+• You can specify the RAM, Memory, or CPUs for each container and pod.
+• The scheduler decides which node will create pods, if the node has enough CPU resources available then, the node will place the pods.
+• CPU is specified in units of cores and memory is specified in units of bytes.
+
+  1) request  - min required resources to create pod   ( ex request.cpu=2)
+  2) limits  - max utilization  ( limits.cpu=4)
+
 
 
  
