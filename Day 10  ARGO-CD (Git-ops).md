@@ -24,3 +24,26 @@ Advantages of GitOps
     Flux
 Simple Definition
 GitOps = Managing Kubernetes using Git + Automation
+
+
+
+whatever will make chamges in github file and commints its automaticly reflect in k8's cluster while we using argo CD
+
+WITHOUT ARGO CD:
+        Before ARGO CD, we deployed applications manually by installing some third party tools like kubectl, helm etc...
+        If we are working with KOPS, we need to provide our configuration details (RBAC) or If we are working on EKS, we need to    provide our IAM credentials.
+If we deploy any application, there is no GUI to see the status of the deployment.
+so we are facing some security challenges and need to install some third party tools.
+
+==> Points to be noted:  <==
+1.Once if we implement ArgoCD, if we make any changes manually in our cluster using the kubectl command, Kubernetes will reject those request from that user. Because when we apply changes manually, ArgoCD will check the actual state of the cluster with the desired state of the cluster (GitHub).
+2.If we make any changes in the GitHub like increasing the replicas in deployment ArgoCD will take the changes and applies in our cluster. So that we can track each and every change and it will maintain the history.
+3.We can easily rollback using git if something went wrong.
+4.If our entire cluster gets deleted due to some network or other issues, we don’t need to worry about it, because all our configuration files are safely stored in GitHub. So we can easily re-apply those configuration files.
+
+----> Install Argo CD
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl get all -n argocd
+
+
