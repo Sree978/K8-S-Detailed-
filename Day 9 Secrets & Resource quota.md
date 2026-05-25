@@ -100,8 +100,51 @@ Kubernetes ResourceQuota is used to limit resource usage inside a namespace.
   1) request  - min required resources to create pod   ( ex request.cpu=2)
   2) limits  - max utilization  ( limits.cpu=4)
 
+create a namespace & create pods in namespace
 
+kubectl create ns food
+vim resourcequota.yml
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: food-rq
+  namespace: food
+spec:
+  hard:
+    requests.cpu: "500m"
+    limits.cpu: "1000m"
+    requests.memory: "50Mi"
+    limits.memory: "100Mi"
+kubectl create -f resourcequota.yml
+ will notice created resourcequota
 
- 
+ kubectl get quota -n food        --> to get details 
+
+if you have limits for namespace for quota also limits should  be
+
+vim pod.yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-1
+  namespace: food
+spec:
+  containers:
+    - name: cont-1
+      image: nginx
+      ports:
+        - containerPort: 80
+      resources:
+        requests:
+          cpu: "50m"
+          memory: "10Mi"
+        limits:
+          cpu: "100m"
+          memory: "15Mi"
+
+    kubectl create -f pod.yml
+
+will notice created pod
+
 
 
