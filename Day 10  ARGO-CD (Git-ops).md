@@ -58,3 +58,14 @@ echo $ARGOCD_SERVER
 kubectl get svc argocd-server -n argocd -o json | jq --raw-output .status.loadBalancer.ingress[0].hostname
  wait for a min and last command will provide DNS server over that wil access ARGOCD 
 
+ click on adavace browser will work  un : admin
+
+TO GET ARGOCD PASSWORD 
+ export ARGO_PWD='kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d'
+ echo $ARGO_PWD
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+
+you will get password and paste and login 
+for chnage password userinfo & update password 
+
+
