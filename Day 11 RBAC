@@ -167,6 +167,53 @@ pod/pod-1 created                         -- as er permisions we can create pod 
    41  kubectl get po -n dev
    42  kubectl run pod-1 --image=nginx -n dev
    43  history
+    -----> to give permissions for all namespes  <-----------
+go to minikube user
+ kubectl config use-context minikube
+cp role.yml to cluster-role.yml
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+
+metadata:
+  name: mustafa-cluster-role
+
+rules:
+- apiGroups: ["*"]
+  resources: ["pods", "deployments", "replicasets"]
+  verbs: ["get", "list", "watch", "create", "delete"]
+
+- apiGroups: ["*"]
+  resources: ["secrets"]
+  verbs: ["get", "list", "create", "delete"]
+
+kubectl create -f cluster-role.yml
+will notice creates cluster-role 
+we have given persmmssions for all namespaces now
+
+role binding
+cp role-binding.yml cluster-role-binding.yml
+
+vim cluster-role-binding.yml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+
+metadata:
+  name: mustafa-cluster-role-binding
+
+subjects:
+- kind: User
+  name: mustafa
+  apiGroup: rbac.authorization.k8s.io
+
+roleRef:
+  kind: ClusterRole
+  name: mustafa-cluster-role
+  apiGroup: rbac.authorization.k8s.io
+
+kubectl create -f cluster-role-binding.yml
+
+now will access sree user all resources from which in namespace 
 
 
 
