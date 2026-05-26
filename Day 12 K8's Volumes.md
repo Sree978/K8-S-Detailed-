@@ -59,6 +59,29 @@ kubectl create -f deployment.yml
 
 will notice created deployment
 
+
+vim deployment.yml
+   13  kubectl create -f deployment.yml
+   14  kubectl get po
+   15  kubectl describe pod flm-b88bc8769-v7mqp
+   16  vim
+   17  vim deployment.yml
+   18  kubectl apply -f deployment.yml
+   19  kubectl get po
+   20  vim deployment.yml
+   21  kubectl apply -f deployment.yml
+   22  kubectl get po
+   23  vim deployment.yml
+   24  kubectl apply -f deployment.yml
+   25  kubectl get po
+   26  kubectl delete deploy flm
+   27  kubectl get po
+   28  kubectl create -f deployment.yml
+   29  kubectl get po
+   30  History
+   31  history
+[root@ip-172-31-18-86 ~]#
+
           
 
 
