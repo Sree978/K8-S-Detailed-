@@ -48,7 +48,7 @@ spec:
           image: nginx
           command: ["/bin/bash", "-c", "while true; do echo this is k8s; sleep 5; done"]
           volumeMounts:
-            - mountPath: "/dev"
+            - mountPath: "/devops"
               name: myvolume
 
       volumes:
