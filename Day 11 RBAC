@@ -37,5 +37,92 @@ There are four components to RBAC in Kubernetes:
 Create ec2 and install minikube 
 
 
+Steps to create certificate.
+  1. lets create a folder:
+    mkdir sree-user && cd sree-user
+  2. Generate a key using openssl :
+    openssl genrsa -out sree.key 2048
+  3. Generate a Client Sign Request (CSR) :
+    openssl req -new -key sree.key -out sree.csr -subj "/CN=sree/O=group1"
+  4. Generate the certificate (CRT) :
+    openssl x509 -req -in sree.csr -CA ~/.minikube/ca.crt -CAkey ~/.minikube/ca.key \
+-CAcreateserial -out sree.crt -days 500
+Steps to create user.
+  1. lets create a user:
+  kubectl config set-credentials sree --client-certificate=sree.crt --client-key=sree
+
+--> create context create for sree  user
+
+    kubectl config set-context chimpu --cluster=minikube --user=sree
+
+    will notice a created a context
+kubectl config view        ----->.  to view all context and minikube details 
+kubectl config use-context chimpu    ----->  To switch to context 
+
+if we search for kubctl get po , svc etc we never see results because we have to give permissons for users
+ for permissions  we have to get  minikube user
+kubectl config use-context minikube
+vim role.yml
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: mustafa-role
+  namespace: dev
+
+rules:
+- apiGroups: ["*"]
+  resources: ["pods", "deployments"]
+  verbs: ["get", "list", "watch", "create"]
+
+- apiGroups: ["*"]
+  resources: ["secrets"]
+  verbs: ["get", "list", "create", "delete"].yml
+
+Kubectl create -f role.yml
+
+will notice created  role here
+kubectl get role -n dev     --> to check created roles 
+
+-- > to attch role to user  (Role bindig)
+
+Vim role-binding.yml
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+
+metadata:
+  name: mustafa-role-binding
+  namespace: dev
+
+subjects:
+- kind: User
+  name: sree
+  apiGroup: rbac.authorization.k8s.io
+
+roleRef:
+  kind: Role
+  name: mustafa-role
+  apiGroup: rbac.authorization.k8s.io
+
+
+kubectl create -f role-binding.yml
+
+will notice creted 
+
+now switch to user and 
+kubectl config use-context chimpu
+ kubectl get cm -n dev     -- wil notice error
+Error from server (Forbidden): configmaps is forbidden: User "sree" cannot list resource "configmaps" in API group "" in the namespace "dev"
+kubectl get po -n dev    -- will see output
+No resources found in dev namespace.
+
+kubectl run pod-1 --image=nginx -n dev
+pod/pod-1 created                         -- as er permisions we can create pod also
+
+
+
+
+
 
 
