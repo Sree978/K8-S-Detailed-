@@ -21,9 +21,18 @@ kubectl get po -w (watch)
 kubectl describe pod (view)
 
 In Kubernetes, there are two types of accounts
-  User Account
-  Service Account
+  User Account   ( used to login into cluster )
+  Service Account  ( to communicate service to service or resource to resource )
     User account: User accounts are used to log into a Kubernetes cluster and manipulate resources therein. Each user account is 
 associated with a unique set of credentials, which are used to authenticate the service’s requests.
     Service Account: Kubernetes Service Accounts are specialised accounts used by applications and services 
 running on Kubernetes to interact with the Kubernetes API.
+
+There are four components to RBAC in Kubernetes:
+  1) roles   - A role defines a set of permissions for a user or group. For example, you might create a role called “admin” that gives the user or group full access to all resources in the cluster.
+  2) Cluster roles  ( have permissons for all name spaces in cluster)
+  3) role bindings    ( have permiison on single namespce)
+  4) ClusterRolesBinding
+
+
+
