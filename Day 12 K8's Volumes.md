@@ -13,4 +13,53 @@ TYpes of volumes:
   • If the Containers get crashed then, the data will still persist and can be accessible by other or newly created containers.
 
 ec2 server & install minikube
+
+In real time will single application on single POD
+
+we have two conatiner 
+1) Application container 
+2) helper conatiner /sidecarconatiner    -  will help get 1st container backup logs, to provide for application container & to run script on main conatiner  & this conatiner will be always in running state. 
+
+fiest container will run application 2nd conatiner will support for first conatiner
+
+vim deployment.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: swiggy
+  template:
+    metadata:
+      labels:
+        app: swiggy
+    spec:
+      containers:
+        - name: cont-1
+          image: nginx
+          volumeMounts:
+            - mountPath: "/flm"
+              name: myvolume
+
+        - name: cont-2
+          image: nginx
+          command: ["/bin/bash", "-c", "while true; do echo this is k8s; sleep 5; done"]
+          volumeMounts:
+            - mountPath: "/dev"
+              name: myvolume
+
+      volumes:
+        - name: myvolume
+          emptyDir: {}
+
+kubectl create -f deployment.yml
+
+will notice created deployment
+
+          
+
+
   
