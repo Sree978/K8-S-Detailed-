@@ -34,5 +34,8 @@ There are four components to RBAC in Kubernetes:
   3) role bindings    ( have permiison on single namespce)
   4) ClusterRolesBinding
 
+Create ec2 and install minikube 
+
+
 
 
