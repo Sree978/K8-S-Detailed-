@@ -122,6 +122,51 @@ pod/pod-1 created                         -- as er permisions we can create pod 
 
 
 
+ practiced commands
+
+ 1  yum install docker -y && systemctl start docker
+    2  curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
+    3     sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+    4     minikube start --driver=docker --force
+    5     minikube status
+    6  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    7     chmod +x kubectl
+    8     mv kubectl /usr/local/bin/
+    9     kubectl version
+   10  clear
+   11  mkdir sree
+   12  cd sree
+   13  openssl genrsa -out sree.key 2048
+   14  ll
+   15  openssl req -new -key sree.key -out sree.csr -subj "/CN=sree/O=group1"
+   16  ll
+   17  openssl x509 -req -in sree.csr -CA ~/.minikube/ca.crt -CAkey ~/.minikube/ca.key -CAcreateserial -out sree.crt -days 500
+   18  ll
+   19  kubectl config set-credentials sree --client-certificate=sree.crt --client-key=sree.key
+   20  kubectl create nm dev
+   21  kubectl create ns dev
+   22  kubectl get po
+   23  kubectl config set-context chimpu --cluster=minikube --user=sree
+   24  kubectl config view
+   25  kubectl config use-context sree
+   26  kubectl config use-context chimpu
+   27  kubectl config view
+   28  kubectl config use-context minikube
+   29  kubectl get ns
+   30  clear
+   31  vim role.yml
+   32  kubectl create -f role.yml
+   33  kubectl get role -n dev
+   34  vim role-binding.yml
+   35  kubectl create -f role-binding.yml
+   36  kubectl get po -n dev
+   37  kubectl get cm -n dev
+   38  kubectl get svc -n dev
+   39  kubectl config use-context chimpu
+   40  kubectl get cm -n dev
+   41  kubectl get po -n dev
+   42  kubectl run pod-1 --image=nginx -n dev
+   43  history
 
 
 
