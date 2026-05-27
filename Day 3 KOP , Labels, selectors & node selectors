@@ -40,7 +40,7 @@ ego to bucket properities and enable bucket versioning
 use of bucket version ( will get data even data deleted in bucket )
 aws s3 ls   ---- to get s3 bucket list 
 
-export KOP_STATE_STORE=S3://sreekanth-kops-state-store      ----->export KOPS_STATE_STORE=s3://sreekanth-kops-state-store kOps stores:
+export KOPS_STATE_STORE=s3://kops-bucket-day4      ----->export KOPS_STATE_STORE=s3://sreekanth-kops-state-store kOps stores:
 
 cluster configuration
 state information
