@@ -58,7 +58,7 @@ kops create cluster --name flm.k8s.local \
 --node-count=2 \
 --node-size=t3.micro \
 --node-volume-size=20 \
---image=ami-091138d0f0d41ff90
+--image=ami-00e801948462f718a
 
 Suggestions:
  * list clusters with: kops get cluster
