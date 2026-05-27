@@ -22,3 +22,14 @@ Helm installation commnads
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-4
 chmod 700 get_helm.sh
 ./get_helm.sh
+helm version
+
+
+How to deploy apllication by using helm
+ 
+helm create myhelm                to create helm
+cd myhelm
+ll
+ will notice templates here 
+cd templates 
+vim 
