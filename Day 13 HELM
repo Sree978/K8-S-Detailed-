@@ -1,1 +1,18 @@
+EC2 server and install kubectk and kops
 
+  Helm is called the package manager for Kubernetes.
+It helps you install, manage, upgrade, and configure Kubernetes applications easily.
+Why Helm is used
+-> Without Helm, you manually create many YAML files:
+    Deployment
+    Service
+    ConfigMap
+    Ingress
+    Secrets
+    PVC
+    etc.
+Helm combines all these into a reusable package called a Chart.
+
+to install tools
+to deploy application 
+to maintain manifest files and helpful for update easily
