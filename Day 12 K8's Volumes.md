@@ -59,28 +59,43 @@ kubectl create -f deployment.yml
 
 will notice created deployment
 
+---> to go inside here we have to two container ( if we wont mnetion particular container its go to default fiest conatiner)
+if we make chnages in container one same changes will reflect in container 2 & if we make chnages in container two same changes will reflect in container one
+
+kubectl exec -it flm-7d9d7959f7-4dxhz -c cont-2 -- bash
+
+if we delete pod Replicaset (RS) will create one more pod default
+but we loss the data which is in conatiners ( container which in pods)
+these type of volumes is emptyDir 
+
+to over this drawback will use  hostpath volume 
+
+---------->HostPath volume  <---------------
+here will get data even pods deleted replica set will create dafault pods and our hostPath volume will help to get same data which is in conatiners of 
+
+delete never delete even pod deleted 
+--> same deployment file but will change only volume name
+
+ volumes:
+        - name: myvolume
+          hostPath:
+            path "tmp/mydta"
+
+
+ drawback
+ -> we can't handle for two servers  (multi node cluster )
+ Id pod create in worker node 1 its fine if its craetes in worker node2 the volume wont apllicable so data also delete
+ -> if server delete volume also delete
+   
+    toover come this drawback will use
+
+will use PV & PVC volume persistent volume & persistent volume claim
+
+
+
 
 vim deployment.yml
-   13  kubectl create -f deployment.yml
-   14  kubectl get po
-   15  kubectl describe pod flm-b88bc8769-v7mqp
-   16  vim
-   17  vim deployment.yml
-   18  kubectl apply -f deployment.yml
-   19  kubectl get po
-   20  vim deployment.yml
-   21  kubectl apply -f deployment.yml
-   22  kubectl get po
-   23  vim deployment.yml
-   24  kubectl apply -f deployment.yml
-   25  kubectl get po
-   26  kubectl delete deploy flm
-   27  kubectl get po
-   28  kubectl create -f deployment.yml
-   29  kubectl get po
-   30  History
-   31  history
-[root@ip-172-31-18-86 ~]#
+ 
 
           
 
