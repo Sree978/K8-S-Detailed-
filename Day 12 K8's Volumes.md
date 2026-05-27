@@ -91,10 +91,92 @@ delete never delete even pod deleted
 
 will use PV & PVC volume persistent volume & persistent volume claim
 
+----------> PV & PVC  Volume <-------------
+ here will use EBS volume 
+
+ even if dleted volumes, pods & cluster also will get same data from EBS volume
+ 
+PV can't able to attach directly to pod will use PVC 
+
+<img width="1092" height="532" alt="image" src="https://github.com/user-attachments/assets/7b19907d-3075-45ae-bb88-c9d5cad97cc0" />
 
 
+
+Create a EBS volume & get Volume id
+
+vim pv.yml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-1
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  awsElasticBlockStore:
+    volumeID: vol-0f3275cf8019de550
+    fsType: ext4
+
+ kubectl create -f pv.yml
+
+ will notice created PV 
+
+ Kubectl get pv
+
+ Kubectl describe pv pv-1  
+
+ Create PV 10 GB again
+ 
+
+ --> create a Pod i want PV is 7 gb
+
+ we have to create pvc
+ 
+
+ vim pvc.yml
+ apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-1
+
+spec:
+  accessModes:
+    - ReadWriteOnce
+
+  resources:
+    requests:
+      storage: 7Gi
+
+ kubectl create -f pvc.yml
+      will notice created pVC
+
+kubectl get pvc   wil notice list of PVC's
+
+
+--> This PVC will attch to POD now 
 
 vim deployment.yml
+
+same deployment file
+
+will chnag only
+volumes:
+        - name: myvolume
+          persistentVolumeClaim:
+            claimName: pvc-1
+ kubectl create -f deplyment.yml
+
+ Now our data will be safe even volume, pod cluster delete also beacuse the data stored in EBS volume
+ 
+
+
+
+ <img width="1077" height="205" alt="image" src="https://github.com/user-attachments/assets/cac3b0ca-6182-4ed9-9a65-d72070efd6a0" />
+
+ 
+
  
 
           
