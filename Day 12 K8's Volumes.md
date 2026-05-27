@@ -92,6 +92,21 @@ delete never delete even pod deleted
 will use PV & PVC volume persistent volume & persistent volume claim
 
 ----------> PV & PVC  Volume <-------------
+
+PERSISTENT VOLUME:
+
+• One Persistent Volume is distributed across the entire Kubernetes Cluster. So
+  that, any node or any node’s pod can access the data from the volume
+  accordingly.
+• In K8S, a PV is a piece of storage in the cluster that has been provisioned by an
+  administrator.
+• If you want to use Persistent Volume, then you have to claim that volume with
+  the help of the manifest YAML file.
+• When a pod requests storage via a PVC, K8S will search for a suitable PV to
+  satisfy the request.
+• If a PV is found that matches the request, the PV is bound to the PVC and the pod
+  can use the storage.
+• If no suitable PV is found, K8S then PVC will remain unbound (pending).
  here will use EBS volume 
 
  even if dleted volumes, pods & cluster also will get same data from EBS volume
