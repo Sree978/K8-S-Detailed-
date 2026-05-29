@@ -134,6 +134,12 @@ go to templates - deployment and change image name
 
 helm upgrade myrelease .
 
+helm history myrelease   --> to get all release list
+
+helm rollback myrelease 1  --> for rollback '
+
+
+
 
  
 
