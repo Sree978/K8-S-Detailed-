@@ -32,4 +32,100 @@ cd myhelm
 ll
  will notice templates here 
 cd templates 
-vim 
+vim deployment.yml
+
+cd myhel
+
+in templates value.yml & chart.yml modify  the values required for deployment.yml
+
+will notice existed manifest files
+
+ helm install release1-0 .    -----> to create helm release
+helm install release1-0 . -n namespace  ---> to install in specific namespace
+
+helm list               -> to check helm list
+kubectl get --namespace default svc -w mustafa-flm       --- > to get DNS of application
+ browse url will access application
+helm uninstall release1-0          --> to delete release
+
+
+Note :  if you are not comfortable with existed manifest file delete all and write you own manifest files
+
+helm create helm1 
+cd helm1
+cd templates 
+rm -rf *   --> to delete all manifest files
+and write our own manifest files
+
+vim.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops
+  annotations:
+    cause: "this is cycle website"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ccit
+  template:
+    metadata:
+      labels:
+        app: ccit
+    spec:
+      containers:
+      - name: cont
+        image: shaikmustafa/cycle
+        ports:
+        - containerPort: 80
+
+install metric server before run HPA
+
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+vim hpa.yml
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: myhpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: devops
+  minReplicas: 3
+  maxReplicas: 6
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 60
+
+write service manifest file 
+ vim svc.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysvc
+spec:
+  type: LoadBalancer
+  selector:
+    app: ccit
+  ports:
+    - port: 80
+      targetPort: 80
+go o helm folder and 
+
+
+ helm install myrelease .   --- > will notice craeted release
+
+kubectl get all  ---> will notice all pods , services ,replicaset, HPA & deployment
+
+get url acdd75e7565854f31b6702c933a9d49b-354114187.us-east-1.elb.amazonaws.com  and browse it 
+
+
+
