@@ -145,6 +145,7 @@ helm rollback myrelease 1  --> for rollback '
 helm lint chimpu    --->  its check manifest file all syntax or not 
 helm template chimpu --> its check manifest file all syntax or not
 helm package packagename --> to pack folder 
+helm repo index .
 
 cat index.yaml        --> will get basic info 
 
@@ -152,6 +153,11 @@ cat index.yaml        --> will get basic info
 install git in cluster 
 
 to keep data in git repo
+
+clone git repo 
+and move .tgz and index.yaml file to your git repo
+
+mv chimou-0.1.0.tgz index.yaml Helm-dump/
 
 
 
