@@ -128,4 +128,14 @@ kubectl get all  ---> will notice all pods , services ,replicaset, HPA & deploym
 get url acdd75e7565854f31b6702c933a9d49b-354114187.us-east-1.elb.amazonaws.com  and browse it 
 
 
+if you want to upgrade application 
+
+go to templates - deployment and change image name 
+
+helm upgrade myrelease .
+
+
+ 
+
+
 
