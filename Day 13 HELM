@@ -165,9 +165,10 @@ git -m "all" .
 git commit -m "all" .
 git push -u origin main
 pass password 
-settings -> developer settings > classic tocken  > regenrate tocken > 
+settings -> developer settings > classic tocken & add repo permissions > regenrate tocken > 
 
 
+will notice all file in git hub repo
 
 
 
