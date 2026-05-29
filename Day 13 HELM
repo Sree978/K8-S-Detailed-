@@ -158,6 +158,15 @@ clone git repo
 and move .tgz and index.yaml file to your git repo
 
 mv chimou-0.1.0.tgz index.yaml Helm-dump/
+go to cd Helm-dump
+
+git add *
+git -m "all" .
+git commit -m "all" .
+git push -u origin main
+pass password 
+settings -> developer settings > classic tocken  > regenrate tocken > 
+
 
 
 
