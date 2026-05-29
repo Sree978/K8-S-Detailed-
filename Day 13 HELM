@@ -139,6 +139,22 @@ helm history myrelease   --> to get all release list
 helm rollback myrelease 1  --> for rollback '
 
 
+--------------> own  helm chart create  & delete <--------------
+
+ 
+helm lint chimpu    --->  its check manifest file all syntax or not 
+helm template chimpu --> its check manifest file all syntax or not
+helm package packagename --> to pack folder 
+
+cat index.yaml        --> will get basic info 
+
+
+install git in cluster 
+
+to keep data in git repo
+
+
+
 
 
  
