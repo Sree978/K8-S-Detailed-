@@ -89,6 +89,11 @@ will notice manifest files
 
 kubectl apply -f .
 
+Kubectl get ing 
+
+will notice DNS and browse it works
+
+
 <img width="433" height="285" alt="image" src="https://github.com/user-attachments/assets/2bc28e05-509d-404b-8087-7c78901d9926" />
 
 
