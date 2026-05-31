@@ -1,0 +1,8 @@
+What is a Network Policy?
+    Network Policies in Kubernetes are like firewall rules for pods. They control which pods can communicate with each other and 
+with other network endpoints (e.g., external services).
+These policies are implemented at the network level by Kubernetes-compatible Container Network Interface (CNI) plugins, 
+such as:
+    Calico
+    Cilium
+    Weave Net
