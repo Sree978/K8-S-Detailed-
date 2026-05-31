@@ -6,3 +6,7 @@ such as:
     Calico
     Cilium
     Weave Net
+Order of Evaluation
+    1) If a pod has no policy, all traffic is allowed.
+    2))If a pod has a policy, then only the required traffic is allowed.
+    3) If a pod has one or more policies, only allowed traffic can pass.
