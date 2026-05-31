@@ -194,7 +194,7 @@ spec:
  
 kubectl get po -0 wide
 get ip here
-kubectl exec -it -n dev zomato -- bash
+kubectl exec -it -n dev zomato -- bash    or direct command ( kubectl exec -it zomato -- apt install iputils-ping -y)
 install ping 
 
 and ping the ip adress will notice its pinging
