@@ -115,6 +115,14 @@ If you want your Pods to be less likely to get evicted:
 Always define proper CPU/memory requests.
 This ensures Pods fall into at least the Burstable class, or ideally the Guaranteed class.
 that way, Kubernetes prioritizes keeping them alive during node pressure.
+
+Pod Affinity → Ensures Pods are scheduled together on the same node (e.g., for apps that benefit from locality).
+
+Pod Anti‑Affinity → Ensures Pods are scheduled apart on different nodes (e.g., for high availability).
+
+Node Affinity → Restricts Pods to run on specific nodes that match labels (e.g., GPU nodes, SSD storage).
+
+Node Anti‑Affinity → Prevents Pods from running on certain nodes (e.g., avoid low‑memory nodes).
    
    
    
