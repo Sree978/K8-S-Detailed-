@@ -123,6 +123,9 @@ Pod Anti‑Affinity → Ensures Pods are scheduled apart on different nodes (e.g
 Node Affinity → Restricts Pods to run on specific nodes that match labels (e.g., GPU nodes, SSD storage).
 
 Node Anti‑Affinity → Prevents Pods from running on certain nodes (e.g., avoid low‑memory nodes).
+
+13) Headless service
+    
    
    
    
