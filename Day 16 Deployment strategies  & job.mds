@@ -1,0 +1,24 @@
+each company have thier own strategy while rollback to over cpme downtime
+WHAT IS DEPLOYMENT STRATEGY
+These are the techniques which are used to manage the rollout and scaling of applications within a Kubernetes cluster.
+Types of Deployment Strategies
+  1) Canary Deployment
+  2) Recreate Deployment
+  3) Rolling Update
+  4) Blue-Green Deployment
+1. CANARY DEPLOYMENT
+A Canary Deployment involves rolling out a new version of your application to a subset of your pods or a 
+percentage of your traffic to test it before deploying it to the entire application in production.
+2. RECREATE DEPLOYMENT:
+In this strategy, the existing version of the application is terminated completely, and a new version is 
+deployed in its place. This approach is simple but may cause downtime during the update.
+  -> we use it pre production not in production
+3. Rolling Update   ( Its default deployment strategy in K8's)
+  Create new pods
+    It starts by creating a few pods of the new version.
+  Monitor Pods
+    It monitors the new pods to make sure they are healthy and working well.
+  Route traffic
+    If the new pods are working fine, Kubernetes gradually increases their number while reducing the old pods.
+  Delete old pods
+    This process continues until all pods are running the new version, and the old version has been phased out.
