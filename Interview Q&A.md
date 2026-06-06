@@ -45,6 +45,28 @@ Reason : wrong image, docker hub wrong credetails, wrong image tag, private imag
 1.11) SECRET MISMANAGEMENT : this will happen when API gets expired, exposing the secrets on logs
 
 
+1) What K8's Networking and how does it works
+     every pod have unique ip address ,pod will communicate with each other and same namespace or different namespace, same server or different server with out nat gateway
+   
+2) PV & PVC
+
+PV peace of storage provided by admin , PVC is request storage from the user
+
+   It's used to decouple the storage from the pod, to store data in volume not in pods
+
+3) Whats RBAC in K8's
+ Its securoty mechanism that controls the access to resources using roles and cluster roles and binding
+
+   
+4)  How does autoscalling works K8's 
+    it supports two types of auto scalling
+   > Horizontal & vertical    - will use Horizontal in real time, here the pods will get created when , the CPU hits the average utilization  ,
+if the no of request getting high automatically no of pods created 
+if the no of request getting hLow automatically no of pods deleted  
+
+   
+
+
  
     
    
