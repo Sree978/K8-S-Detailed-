@@ -60,9 +60,73 @@ PV peace of storage provided by admin , PVC is request storage from the user
    
 4)  How does autoscalling works K8's 
     it supports two types of auto scalling
-   > Horizontal & vertical    - will use Horizontal in real time, here the pods will get created when , the CPU hits the average utilization  ,
+   > Horizontal & vertical    - will use Horizontal in real time, here the pods will get created when , the CPU hits the average utilization  , no of request or memory utilization
 if the no of request getting high automatically no of pods created 
-if the no of request getting hLow automatically no of pods deleted  
+if the no of request getting hLow automatically no of pods deleted
+
+ VPA 
+-> no of pod wont create , instead of creating no of pods here the resources (CPU RAM ) will get increase in the same pod,pod get restart for increasing the resources 
+
+5) How do you debug te kubernetes Pods
+   ans: DESCRIBE
+        LOGS
+        EXEC
+        EVENTS
+        KUBECTL TOP
+6) How does rolling update works in K8's
+    whenever we update image for deployment , the Deployment will craete a new replicaset from thid replicaset new pods created, when new pod created from repliacset old pod deleted from old replica set .
+   so now traffic routed to the newly created pods
+   
+7) Whats ingress in k8's & how does it works
+   ans :
+   Ingress is used to manage the external traffic , (http https ) based on roles
+   ingress supports bith host based and path based routing and aso it supports the ssl and tsl termination
+
+9) what happen if your pod resurces need to grow beyond the assigned limits ?
+
+   OOOkilled error
+   
+11) what are sidecar containers & helper conatiners
+Usuvally pod contains two containers  primary ( where application going to run)
+    second container which helps the first container to run the application
+    2nd container used for multiple purpose one is taking backup from the main application from the conatiner
+     second one is excuting the script on application Containers
+    3rd Storing configmaps , passing API keys etc
+
+12)  QOS ( Quality of service )
+
+    <img width="709" height="404" alt="image" src="https://github.com/user-attachments/assets/4c26d7f7-b672-42ab-828a-84e3afbc0b0d" />
+
+When a Node runs out of memory, Kubernetes decides which Pod to remove first based on its Quality of Service (QoS) class.
+QoS Classes
+Guaranteed → Strongest priority, least likely to be evicted.
+Burstable → Medium priority, may be evicted if needed.
+BestEffort → Weakest priority, evicted first under pressure.
+Example Scenario
+NODE‑1 is running out of memory.
+Kubernetes checks QoS of all running Pods.
+Pod3 has BestEffort QoS (no fixed CPU/memory requests).
+Since BestEffort Pods are lowest priority, Pod3 gets evicted first ❌. 
+The good news?  
+When a Pod is evicted due to resource pressure, Kubernetes doesn’t just stop there — it reschedules Pod3 to NODE‑2 where there is enough space.
+
+🔑 Key Takeaway
+If you want your Pods to be less likely to get evicted:
+Always define proper CPU/memory requests.
+This ensures Pods fall into at least the Burstable class, or ideally the Guaranteed class.
+that way, Kubernetes prioritizes keeping them alive during node pressure.
+   
+   
+   
+
+
+   
+   
+
+   
+   
+ 
+
 
    
 
