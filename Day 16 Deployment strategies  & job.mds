@@ -50,3 +50,18 @@ Service ---> Green Pods (v2) <-- Live
              Blue Pods (v1)  <-- Idle
 
 The switch happens by changing the Kubernetes Service selector or updating the load balancer routing.
+
+-------> JOBS <-----------
+KUBERNETES JOBS:
+   It is a resource that is used to achieve a particular work like backup script and, once the work is completed the pod will be deleted.
+  Use cases:
+    Database backup script needs to run
+    Running batch processes
+    Running the task on the scheduled interval
+    Log Rotation
+  Key Features:
+    One-time Execution: If you have a task that needs to be executed one time whether it's succeed or fail then the job will be finished.
+    Parallelism: If you want to run multiple pods at the same time.
+    Scheduling: If you want to schedule a specific number of pods after a specific time.
+    Restart Policy: You can specify whether the Job should restart if fails.
+
