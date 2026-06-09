@@ -22,3 +22,31 @@ deployed in its place. This approach is simple but may cause downtime during the
     If the new pods are working fine, Kubernetes gradually increases their number while reducing the old pods.
   Delete old pods
     This process continues until all pods are running the new version, and the old version has been phased out.
+
+
+Blue-Green Deployment is a deployment strategy used in Kubernetes (K8s) and other platforms to release new application versions with zero or minimal downtime and easy rollback.
+
+Concept
+
+You maintain two identical environments:
+
+Blue = Current production version (live traffic)
+Green = New version you want to release
+
+Example:
+
+Users
+  |
+  v
+Service ---> Blue Pods (v1)  <-- Live
+             Green Pods (v2) <-- Not receiving traffic
+
+After testing Green:
+
+Users
+  |
+  v
+Service ---> Green Pods (v2) <-- Live
+             Blue Pods (v1)  <-- Idle
+
+The switch happens by changing the Kubernetes Service selector or updating the load balancer routing.
