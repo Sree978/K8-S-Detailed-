@@ -1,5 +1,9 @@
 EC2 server and install kubectk and kops
 
+Helm is a Kubernetes package manager that helps teams deploy, upgrade, rollback, and manage complex applications 
+using reusable templates and environment-specific configurations, making large-scale production deployments easier 
+and more reliable.
+
   Helm is called the package manager for Kubernetes.
 It helps you install, manage, upgrade, and configure Kubernetes applications easily.
 Why Helm is used
