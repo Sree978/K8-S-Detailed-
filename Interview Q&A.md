@@ -125,6 +125,52 @@ Node Affinity → Restricts Pods to run on specific nodes that match labels (e.g
 Node Anti‑Affinity → Prevents Pods from running on certain nodes (e.g., avoid low‑memory nodes).
 
 13) Headless service
+
+14) Crashloopbackoff
+
+ k8s created pod > inside pod we have conatiner > once start container its crash > k8 will try to restart and try to create conatiner > again conatiner start and crash > again k8 will try to create container   --> its called loopbackoff
+  why : container crashed 
+  identify & solution : 1) describe pod   
+  reasons : prob fail , permision denied , oomkill 
+
+15) Imagepullbackoff
+       kublet try pull the image but its failed, again try its again failed   --> its called backoff
+    solution : kubectl get po  or kubctl describe pod podname
+    reasons : wrong image tag 0r name ( ex myapp v1.1.4) ,
+           private : pull access denied , secret container
+16)   Errimagepull
+       will get instance error,  kublet try pull the image but its failed will get Errimagepull
+
+17) CreateConatinerConfigError
+
+ Backend whats hapoen       failed create container
+                            conatiner never start
+                            image never pull
+                            no app code run 
+solution : describe 
+    dueto config maps , if won't pass Environment variables properly, volume mount 
+
+18) createcontainer error
+
+    dependecies not installes
+    db conatiner not started
+    permission issues
+    if application run non-root user
+19 ) OOMKILLed
+      Reasons : resources requests: 500 mi  and limits: 1 gi   -> will get resources from node   sigkill will kills conatiner 
+     solution : will increase resources
+20) nodenotready
+     while creating cluster
+    reasons : kubelet not ready , n/w unavailability , if kubelet down in one workernode, node controller will check evrysec about node its check commuication b/w api server  and kubelet won't get response so node not ready state .
+    solution : go to particular worker node and check either kubelet is there or not 
+    
+    
+    
+  
+     
+    
+
+    
     
    
    
