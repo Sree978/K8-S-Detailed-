@@ -161,8 +161,20 @@ solution : describe
      solution : will increase resources
 20) nodenotready
      while creating cluster
-    reasons : kubelet not ready , n/w unavailability , if kubelet down in one workernode, node controller will check evrysec about node its check commuication b/w api server  and kubelet won't get response so node not ready state .
-    solution : go to particular worker node and check either kubelet is there or not 
+    reasons : kubelet not ready , disk utilise complete also , n/w unavailability , if kubelet down in one workernode, node controller will check evrysec about node its check commuication b/w api server  and kubelet won't get response so node not ready state .
+    solution : go to particular worker node and check either kubelet is there or not
+               n/w issues also : if someone chnaged SG ,
+    diskutilise : will delete unnessary data, if its imp will zip and move to s3
+
+21) Pod unscheduled
+     reason :  resources : when we didn't have sufficient resources from our worker nodes
+              taint & tolerations : There is no tolerance
+              node selector  :
+              affinities  :    solution : prefered during schedule
+              secretnot find :  solution : if the secret not in same spaces
+              PVC pending :   solution : will change storage class type automate   ( will use ebs.csi.aws.com)
+    
+     
     
     
     
