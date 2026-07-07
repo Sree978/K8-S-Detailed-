@@ -173,10 +173,63 @@ solution : describe
               affinities  :    solution : prefered during schedule
               secretnot find :  solution : if the secret not in same spaces
               PVC pending :   solution : will change storage class type automate   ( will use ebs.csi.aws.com)
-    
+
+
+    Scenario Based Questions & A
+
+    1) Production outage : podrashloop
+        error rate : 1% to 40 % increased
+        pod : crashloopbackoff
+        HPA : creates more pods
+       solution : Rollback to previoues version  -> if roll back fails will pause deployment
+                  Freeze the HPA ,
+                   Investigae : get the logs from pods
+                                events from the pods
+                                      OOOMKILLEd
+                                       probfailed
+       <img width="294" height="159" alt="image" src="https://github.com/user-attachments/assets/3f6b85ef-3526-4cee-8067-1c55b1ed5035" />
+
+will use canary deployment 
+
+
+2) node under pressure   CPU 90 % used , memory 85% used  happening pod eviction
+     Kubectl get node
+     kubectl top no
+         new pod scheduled & taint 
+     solution : memory pressure true
+               Disk pressure  true
+               processure id : true
+       will shedule autoscalling for cluster
+
+3)  how to design zero downtime deployment
+      i need zero downtime
+      rollback not more than 5 sec
+      deploymets 500 pods at time
+      minimal customer support
+        ans :
+    "To achieve zero downtime, I would use Kubernetes Rolling Updates with maxUnavailable=0 and an appropriate maxSurge value. I would configure readiness and liveness probes so traffic reaches only healthy pods. For 500 pods, I'd deploy in controlled batches while ensuring sufficient cluster capacity. The CI/CD pipeline would include testing, security scanning, and monitoring. I'd use Prometheus and Grafana to detect issues, and if failures occur, I'd execute kubectl rollout undo to quickly revert to the previous ReplicaSet. This approach provides zero downtime, rollback within seconds, and minimal customer impact."
+
+
+4)   FE pod > not communication backend service 
+  FE running
+  DNS working
+  service exist
+       pod --> kubectl exec -it pod-name -bash
+       curl http://backend:8080
+       connection fail
+   either this service expose that pod or not
+
      
     
-    
+    proper labels selectors and probes 
+
+5) CI/CD + Kubernetes
+
+Rollbacks are slow
+Configuration drift issues
+Manual approval causing deployment delays
+   ans : 
+   "For this scenario, I would improve the deployment process by using Kubernetes Rolling Update or Blue-Green deployment for fast rollback. To eliminate configuration drift, I would implement GitOps using Argo CD, where Git is the single source of truth and any manual changes are automatically corrected. To reduce deployment delays, I would automate approvals for non-production environments and keep only a single approval before production deployment. This approach provides faster releases, rollback within seconds, consistent environments, and minimal customer impact.
     
   
      
